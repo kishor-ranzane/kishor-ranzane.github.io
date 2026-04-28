@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kishor Ranzane - Senior Software Engineer specializing in Java, Spring Boot, Microservices, AWS, and Agentic AI">
+    <meta name="keywords" content="Java Developer, Senior Software Engineer, Spring Boot, AWS, Microservices, Agentic AI">
+    <title>Kishor Ranzane | Senior Software Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --accent: #06b6d4;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-dark: #0f172a;
+            --border: #e2e8f0;
+            --gradient-1: linear-gradient(135deg, #2563eb 0%, #06b6d4 100%);
+            --gradient-2: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            --radius: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 1.5rem 4rem;
+            background: var(--bg-secondary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 70%;
+            height: 140%;
+            background: var(--gradient-1);
+            opacity: 0.05;
+            border-radius: 50%;
+            filter: blur(80px);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-tagline {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.875rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-1);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .hero-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: white;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .floating-badge {
+            position: absolute;
+            background: white;
+            padding: 0.75rem 1.25rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow-lg);
+            font-weight: 600;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-badge.badge-1 {
+            top: 10%;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-badge.badge-2 {
+            bottom: 20%;
+            left: -30px;
+            animation-delay: 1s;
+        }
+
+        .floating-badge.badge-3 {
+            bottom: 5%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-badge i {
+            color: var(--primary);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Section Common Styles */
+        section {
+            padding: 6rem 1.5rem;
+        }
+
+        .section-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about {
+            background: var(--bg-primary);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+        }
+
+        .about-highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .highlight-card {
+            background: var(--bg-secondary);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .highlight-card i {
+            font-size: 2rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+
+        .highlight-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Experience Section */
+        .experience {
+            background: var(--bg-secondary);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 100%;
+            background: var(--gradient-1);
+            border-radius: 3px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 0 3rem 3rem;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+            padding-right: 3rem;
+            padding-left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+            padding-left: 3rem;
+            padding-right: 0;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            border: 4px solid white;
+            border-radius: 50%;
+            top: 0;
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content h4 {
+            font-size: 1rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .timeline-company {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            text-align: left;
+        }
+
+        .timeline-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            justify-content: flex-start;
+        }
+
+        .tech-tag {
+            padding: 0.25rem 0.75rem;
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Project Details */
+        .project-details {
+            background: var(--bg-primary);
+        }
+
+        .project-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        .project-header {
+            background: var(--gradient-2);
+            color: white;
+            padding: 2rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .project-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .project-section {
+            margin-bottom: 2rem;
+        }
+
+        .project-section h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .project-section h4 i {
+            color: var(--primary);
+        }
+
+        .feature-list {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .feature-list li i {
+            color: var(--accent);
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-secondary);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .skill-category h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .skill-category h3 i {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-1);
+            color: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            padding: 0.5rem 1rem;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: var(--bg-primary);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .achievement-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary);
+        }
+
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .achievement-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .achievement-card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .achievement-date {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Education Section */
+        .education {
+            background: var(--bg-secondary);
+        }
+
+        .education-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-align: center;
+        }
+
+        .education-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .education-icon i {
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .education-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .education-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--gradient-2);
+            color: white;
+        }
+
+        .contact .section-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .contact .section-title {
+            color: white;
+        }
+
+        .contact .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .contact-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 2rem 1.5rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 992px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-description {
+                margin: 0 auto 2rem;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .hero-image-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left !important;
+                padding-left: 50px !important;
+                padding-right: 0 !important;
+            }
+
+            .timeline-dot {
+                left: 10px !important;
+                right: auto !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0.75rem 0;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+                box-shadow: var(--shadow-lg);
+                border-top: 1px solid var(--border);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--border);
+            }
+
+            .nav-links li:last-child {
+                border-bottom: none;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            section {
+                padding: 4rem 1rem;
+            }
+
+            .about-highlights {
+                grid-template-columns: 1fr;
+            }
+
+            .floating-badge {
+                display: none;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-tagline {
+                font-size: 1rem;
+            }
+
+            .hero-image-container {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero-image {
+                font-size: 5rem;
+            }
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .timeline-content {
+                padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-lg);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">KR</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span>Kishor Ranzane</span></h1>
+                <p class="hero-tagline">Senior Software Engineer | Backend Developer | Agentic AI Enthusiast</p>
+                <p class="hero-description">
+                    Specialized in building scalable microservices, AI-powered data platforms, and autonomous agents.
+                    7+ years of experience crafting enterprise solutions for Banking, Insurance, and Customer Experience domains.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">7+</div>
+                        <div class="stat-label">Years Exp</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Awards</div>
+                    </div>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Get in Touch
+                    </a>
+                    <a href="#projects" class="btn btn-secondary">
+                        <i class="fas fa-folder-open"></i> View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-image-container">
+                    <div class="hero-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="floating-badge badge-1">
+                        <i class="fab fa-java"></i> Java Expert
+                    </div>
+                    <div class="floating-badge badge-2">
+                        <i class="fab fa-aws"></i> AWS Certified
+                    </div>
+                    <div class="floating-badge badge-3">
+                        <i class="fas fa-robot"></i> Agentic AI
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">About Me</span>
+                <h2 class="section-title">Passionate About Building Intelligent Systems</h2>
+                <p class="section-subtitle">
+                    Combining deep backend expertise with cutting-edge AI to create next-generation solutions
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>Engineering Excellence Meets AI Innovation</h3>
+                    <p>
+                        I'm a Senior Software Engineer with 7+ years of experience building enterprise-grade applications
+                        across Banking, Insurance, and Customer Experience domains. My expertise spans from designing
+                        high-performance microservices to implementing AI-powered data platforms.
+                    </p>
+                    <p>
+                        Currently, I'm focused on the intersection of traditional software engineering and Agentic AI,
+                        developing autonomous agents that can analyze, reason, and solve complex problems independently.
+                        I've built a Bugfixer Agent that demonstrates practical applications of AI in software development workflows.
+                    </p>
+                    <div class="about-highlights">
+                        <div class="highlight-card">
+                            <i class="fas fa-microchip"></i>
+                            <h4>Microservices Architecture</h4>
+                            <p>Designing scalable, resilient distributed systems</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-robot"></i>
+                            <h4>Agentic AI</h4>
+                            <p>Building autonomous AI agents for software engineering</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-database"></i>
+                            <h4>Data Engineering</h4>
+                            <p>Federated data access and analytics platforms</p>
+                        </div>
+                        <div class="highlight-card">
+                            <i class="fas fa-cloud"></i>
+                            <h4>Cloud Native</h4>
+                            <p>AWS services expertise for enterprise solutions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <!-- Placeholder for future image -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="experience" id="experience">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Career Journey</span>
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">
+                    A track record of delivering impactful solutions across diverse industries
+                </p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">July 2025 - Present</span>
+                        <h3>Senior Software Engineer</h3>
+                        <h4>NICE Systems</h4>
+                        <p class="timeline-company">CXone FDL - Federated Data Layer | Team Size: 11</p>
+                        <p>
+                            Building AI-powered federated data platform with LLM integration,
+                            multi-source data federation (Snowflake, Google Analytics, Salesforce),
+                            and developing autonomous Bugfixer Agent using Agentic AI principles.
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Java 17</span>
+                            <span class="tech-tag">Spring Boot 3.5</span>
+                            <span class="tech-tag">AWS ECS</span>
+                            <span class="tech-tag">Snowflake</span>
+                            <span class="tech-tag">Agentic AI</span>
+                            <span class="tech-tag">LLM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">May 2023 - July 2025</span>
+                        <h3>Sr. Software Developer - Java</h3>
+                        <h4>Synechron (Client: HSBC)</h4>
+                        <p class="timeline-company">WCAO - World Class Account Onboarding | Team Size: 17</p>
+                        <p>
+                            Developed microservices-based digital onboarding platform enabling
+                            5-minute account opening. Integrated identity verification (UIDAI, SIGNZY)
+                            with event-driven AWS architecture.
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Java 11</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Kubernetes</span>
+                            <span class="tech-tag">Oracle</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Sep 2021 - May 2023</span>
+                        <h3>Sr. Software Developer - Java</h3>
+                        <h4>Synechron (Client: Transamerica)</h4>
+                        <p class="timeline-company">BDS - Business Domain Service | Team Size: 25</p>
+                        <p>
+                            Enhanced retirement plan administration platform managing 401(k) plans.
+                            Handled participant onboarding, contributions, fund allocations,
+                            and transaction processing at scale.
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Java 8</span>
+                            <span class="tech-tag">Spring Boot</span>
+                            <span class="tech-tag">DB2</span>
+                            <span class="tech-tag">Microservices</span>
+                            <span class="tech-tag">Kibana</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Mar 2020 - Sep 2021</span>
+                        <h3>Software Developer</h3>
+                        <h4>Capgemini</h4>
+                        <p class="timeline-company">Insurance Application | Team Size: 12</p>
+                        <p>
+                            Maintained and enhanced insurance-domain application. Added new functionalities,
+                            refactored legacy code, resolved production incidents, and automated
+                            operational tasks.
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">Spring</span>
+                            <span class="tech-tag">REST</span>
+                            <span class="tech-tag">MS SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-date">Nov 2018 - Aug 2019</span>
+                        <h3>Software Developer</h3>
+                        <h4>Team Lease (Client: Bajaj Finserv)</h4>
+                        <p class="timeline-company">Health Insurance Management | Team Size: 7</p>
+                        <p>
+                            Implemented health insurance exchange and eligibility platform.
+                            Managed customer data, campaign execution, and reporting for
+                            eligibility determination.
+                        </p>
+                        <div class="timeline-tech">
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">MS SQL Server</span>
+                            <span class="tech-tag">IBM Unica</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="project-details" id="projects">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Featured Work</span>
+                <h2 class="section-title">Project Highlights</h2>
+                <p class="section-subtitle">
+                    Deep dive into my most impactful projects and contributions
+                </p>
+            </div>
+
+            <!-- FDL Project -->
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <h3>CXone FDL - Federated Data Layer</h3>
+                    <div class="project-meta">
+                        <span><i class="fas fa-building"></i> NICE Systems</span>
+                        <span><i class="fas fa-users"></i> Team Size: 11</span>
+                        <span><i class="fas fa-tag"></i> Customer Experience</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        FDL is an AI-powered core data platform within the NICE CXone Illuminate domain designed to provide
+                        a unified, secure, and scalable access layer over multiple heterogeneous data sources. The platform
+                        combines traditional data federation with LLM-based prompt management for intelligent data querying
+                        and analytics. The system exposes standardized REST APIs that abstract underlying data sources including
+                        Snowflake, Google Analytics, Salesforce, and Bot Builder, allowing consumers to query operational and
+                        analytical data without direct dependency on physical storage.
+                    </p>
+
+                    <div class="project-section">
+                        <h4><i class="fas fa-star"></i> Key Features</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>Federated Data Access Layer:</strong> Unified REST API interface over multiple backend data sources (Snowflake, Google Analytics, Salesforce, Bot Builder) without data duplication</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>LLM Integration:</strong> Integrated Prompt Manager Service for AI-driven operations with configurable prompt templates, versioning, and token usage tracking</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Tenant & Division-Level Segmentation:</strong> Strict data isolation through automatic tenant_id injection using Apache Calcite SQL transformation with RBAC support</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>High-Performance Query Pipeline:</strong> SQL processing with syntax validation, semantic validation, guardrailing, and optimized Snowflake execution</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>AI-Ready Schema Architecture:</strong> Schema definitions with instructions and examples for LLM context and few-shot learning</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Bugfixer Agent:</strong> Autonomous AI agent for code analysis, bug detection, and automated fix generation using LLM-powered reasoning</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-section">
+                        <h4><i class="fas fa-tasks"></i> Key Responsibilities</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-chevron-right"></i> Designed and developed REST APIs for fetching data from Snowflake, Google Analytics, Salesforce, and Bot Builder</li>
+                            <li><i class="fas fa-chevron-right"></i> Implemented LLM integration layer with retry-resilient REST client, exponential backoff, and distributed tracing</li>
+                            <li><i class="fas fa-chevron-right"></i> Built tenant and division-based data segmentation using Apache Calcite SQL transformation</li>
+                            <li><i class="fas fa-chevron-right"></i> Developed Bugfixer Agent using Agentic AI principles for autonomous code analysis and bug resolution</li>
+                            <li><i class="fas fa-chevron-right"></i> Integrated AWS services (S3, Secrets Manager, Systems Manager, DynamoDB, CloudWatch)</li>
+                            <li><i class="fas fa-chevron-right"></i> Implemented comprehensive unit tests, integration tests (Cucumber BDD), and mutation testing (PIT)</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-tech">
+                        <span class="tech-tag">Java 17</span>
+                        <span class="tech-tag">Spring Boot 3.5</span>
+                        <span class="tech-tag">Apache Calcite</span>
+                        <span class="tech-tag">Snowflake</span>
+                        <span class="tech-tag">AWS ECS</span>
+                        <span class="tech-tag">DynamoDB</span>
+                        <span class="tech-tag">S3</span>
+                        <span class="tech-tag">LLM/Prompt Manager</span>
+                        <span class="tech-tag">Agentic AI</span>
+                        <span class="tech-tag">JUnit 5</span>
+                        <span class="tech-tag">Cucumber</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- WCAO Project -->
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <h3>WCAO - World Class Account Onboarding</h3>
+                    <div class="project-meta">
+                        <span><i class="fas fa-building"></i> HSBC via Synechron</span>
+                        <span><i class="fas fa-users"></i> Team Size: 17</span>
+                        <span><i class="fas fa-tag"></i> Banking</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        WCAO is a microservices-based digital onboarding platform for HSBC that enables customers to open
+                        bank accounts within five minutes. The system integrates multiple identity verification services,
+                        including government (UIDAI) and third-party providers (SIGNZY), and uses an event-driven AWS
+                        architecture with orchestrated workflows to ensure secure, scalable, and compliant customer
+                        onboarding across multiple countries.
+                    </p>
+
+                    <div class="project-section">
+                        <h4><i class="fas fa-star"></i> Key Features</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>5-Minute Account Opening:</strong> Streamlined digital onboarding reducing account creation time drastically</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Multi-Provider Identity Verification:</strong> Integrated UIDAI (government) and SIGNZY for comprehensive KYC</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Event-Driven Architecture:</strong> AWS-based event-driven system with orchestrated workflows</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Multi-Country Support:</strong> Scalable platform supporting onboarding across multiple regions</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Compliance & Security:</strong> Built-in regulatory compliance and secure data handling</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-tech">
+                        <span class="tech-tag">Java 11</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Microservices</span>
+                        <span class="tech-tag">AWS</span>
+                        <span class="tech-tag">Kubernetes</span>
+                        <span class="tech-tag">Oracle</span>
+                        <span class="tech-tag">Feign Client</span>
+                        <span class="tech-tag">JUnit</span>
+                        <span class="tech-tag">SonarQube</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BDS Project -->
+            <div class="project-card fade-in">
+                <div class="project-header">
+                    <h3>BDS - Business Domain Service</h3>
+                    <div class="project-meta">
+                        <span><i class="fas fa-building"></i> Transamerica via Synechron</span>
+                        <span><i class="fas fa-users"></i> Team Size: 25</span>
+                        <span><i class="fas fa-tag"></i> Insurance</span>
+                    </div>
+                </div>
+                <div class="project-body">
+                    <p class="project-description">
+                        Internal retirement plan administration platform used by Transamerica to manage employer-sponsored
+                        retirement plans (such as 401(k)). The system handled participant onboarding, plan configuration,
+                        contributions, fund allocations, transaction processing, and reporting. The project focused on
+                        enhancing scalability, reliability, and versioned feature upgrades to support large volumes of
+                        retirement plan data and improve operational efficiency.
+                    </p>
+
+                    <div class="project-section">
+                        <h4><i class="fas fa-star"></i> Key Features</h4>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>401(k) Plan Management:</strong> Complete lifecycle management of employer-sponsored retirement plans</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Participant Onboarding:</strong> Streamlined enrollment and plan configuration workflows</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Transaction Processing:</strong> High-volume contributions, fund allocations, and transfers</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Comprehensive Reporting:</strong> Real-time analytics and compliance reporting</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Versioned Upgrades:</strong> Controlled feature rollouts with backward compatibility</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-tech">
+                        <span class="tech-tag">Java 8</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Microservices</span>
+                        <span class="tech-tag">DB2</span>
+                        <span class="tech-tag">Feign Client</span>
+                        <span class="tech-tag">Swagger</span>
+                        <span class="tech-tag">Kibana</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills" id="skills">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Technical Expertise</span>
+                <h2 class="section-title">Skills & Technologies</h2>
+                <p class="section-subtitle">
+                    A comprehensive toolkit for building modern enterprise applications
+                </p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Java 8</span>
+                        <span class="skill-tag">Java 11</span>
+                        <span class="skill-tag">Java 17</span>
+                        <span class="skill-tag">SQL</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Spring Boot</span>
+                        <span class="skill-tag">Spring Framework</span>
+                        <span class="skill-tag">Spring Security</span>
+                        <span class="skill-tag">Spring Retry</span>
+                        <span class="skill-tag">Apache Calcite</span>
+                        <span class="skill-tag">JSQLParser</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fab fa-aws"></i> AWS Services</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Lambda</span>
+                        <span class="skill-tag">Step Functions</span>
+                        <span class="skill-tag">API Gateway</span>
+                        <span class="skill-tag">ECS</span>
+                        <span class="skill-tag">EC2</span>
+                        <span class="skill-tag">S3</span>
+                        <span class="skill-tag">DynamoDB</span>
+                        <span class="skill-tag">SNS/SQS</span>
+                        <span class="skill-tag">Secrets Manager</span>
+                        <span class="skill-tag">CloudWatch</span>
+                        <span class="skill-tag">CloudFormation</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-database"></i> Databases</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">DB2</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">DynamoDB</span>
+                        <span class="skill-tag">MS SQL Server</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-robot"></i> AI & LLM</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Agentic AI</span>
+                        <span class="skill-tag">LLM Integration</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Few-shot Learning</span>
+                        <span class="skill-tag">AI Agents</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-vial"></i> Testing & Quality</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JUnit 5</span>
+                        <span class="skill-tag">Mockito</span>
+                        <span class="skill-tag">Cucumber BDD</span>
+                        <span class="skill-tag">SonarQube</span>
+                        <span class="skill-tag">SonarLint</span>
+                        <span class="skill-tag">Mutation Testing (PIT)</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> DevOps & Tools</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Bitbucket</span>
+                        <span class="skill-tag">Jenkins</span>
+                        <span class="skill-tag">Kubernetes</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Maven</span>
+                        <span class="skill-tag">Nexus</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-chart-line"></i> Monitoring & Logging</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Splunk</span>
+                        <span class="skill-tag">Kibana</span>
+                        <span class="skill-tag">CloudWatch</span>
+                        <span class="skill-tag">K8s Logs</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-drafting-compass"></i> Design Patterns</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Factory</span>
+                        <span class="skill-tag">Singleton</span>
+                        <span class="skill-tag">Builder</span>
+                        <span class="skill-tag">Prototype</span>
+                        <span class="skill-tag">Proxy</span>
+                        <span class="skill-tag">Decorator</span>
+                        <span class="skill-tag">MVC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Achievements Section -->
+    <section class="achievements" id="achievements">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Recognition</span>
+                <h2 class="section-title">Achievements & Awards</h2>
+                <p class="section-subtitle">
+                    Recognition for excellence and outstanding contributions
+                </p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Surpass Award</h3>
+                    <p>Recognized for exceptional performance and going above and beyond expectations</p>
+                    <span class="achievement-date">April 2022 - Synechron</span>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Employee of the Month</h3>
+                    <p>Awarded for outstanding contributions and dedication to project success</p>
+                    <span class="achievement-date">February 2023 - Synechron</span>
+                </div>
+                <div class="achievement-card fade-in">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Star Award</h3>
+                    <p>Recognized twice for stellar performance and leadership qualities</p>
+                    <span class="achievement-date">Oct 2023 & Feb 2023 - Synechron</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="education" id="education">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Education</span>
+                <h2 class="section-title">Academic Background</h2>
+            </div>
+            <div class="education-card fade-in">
+                <div class="education-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Bachelor of Computer Science</h3>
+                <h4>Savitribai Phule Pune University</h4>
+                <p>Foundation in computer science principles, algorithms, data structures, and software engineering</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-badge">Get In Touch</span>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">
+                    Open to discussing opportunities in Backend Development, AI/ML, and Agentic AI
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:kishorranzane@gmail.com">kishorranzane@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <a href="https://linkedin.com/in/kishorranzane" target="_blank">linkedin.com/in/kishorranzane</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/kishorranzane" target="_blank">github.com/kishorranzane</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Kishor Ranzane. All rights reserved. | Built with passion for clean code and intelligent systems.</p>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const scrollTop = document.querySelector('.scroll-top');
+
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
